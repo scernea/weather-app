@@ -12,6 +12,13 @@ h1 {
 .small-text {
   font-size: 10px;
 }
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #000000;
+  text-decoration: none;
+}
 .icon-main {
   max-width: 300px;
   margin: 0 auto;
@@ -57,6 +64,12 @@ h1 {
   top: -15px;
   left: -37px;
 }
+.emoji-mag-two {
+  position: absolute;
+  top: 50px;
+  left: 540px;
+  z-index: 1;
+}
 .emoji-day {
   position: relative;
   top: 12px;
@@ -75,9 +88,18 @@ h1 {
 .emoji-wind {
   position: relative;
   top: 90px;
-  left: -222px;
+  left: -223px;
 }
-
+.emoji-celcius {
+  position: relative;
+  top: 115px;
+  left: -262px;
+}
+.emoji-far {
+  position: relative;
+  top: 140px;
+  left: -300px;
+}
 .overlay-text-day {
   position: relative;
   top: -15px;
