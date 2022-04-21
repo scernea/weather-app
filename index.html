@@ -4,11 +4,84 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <h1>Hello Git</h1>
-    <script src=""script.js"></script>
+  <div class="container">
+      <br />
+     <div class="col center background"><input class="form-control form-control-sm" type="text" placeholder="Enter city here..." id="city-input"></div>
+       <div class="background center">
+        <br />
+         <div class="background-menu"><br /></div>
+        <div class="row">
+          <div class="col">
+        <span class="col-main"><p id="inputed-city">San Francisco</p></span><br /><br />      
+      </div>
+      <div class="col emoji-menu">
+        <span class="emoji-mag"><button class="btn shadow-none">🔍</button></span>
+        <span class="emoji-day"><button class="btn shadow-none">🗓</button></span>
+        <span class="emoji-hour"><button class="btn shadow-none">⌛️</button></span>
+        <span class="emoji-wet" id="degrees-celcius"><button class="btn shadow-none">C°</Canvas></button></span>
+        <span class="emoji-wind" id="degrees-far"><button class="btn shadow-none">F°</button></span>
+      </div>
+      </div>
+        <br />
+        <img src="media/sun.png" alt="sunny" class="icon-main" />
+        <span class="text-one" id="text-day">SUN</span>
+        <span class="text-two">19:03</span>
+        <span class="text-three">14°</span>
+        <span class="text-four">06%</span>
+        <span class="text-five">4km/h</span>
+        <span class="text-six">clear</span>
+      <br />
+      <br />
+        <br />
+    <div class="row center">
+    <div class="col col-one" align="center">
+      <div class="maintxt">
+          <img src="media/cloudy-03.png" class="img-responsive icon-medium">
+          <span class="overlay-text-day">MON</span><br />
+          <span class="overlay-text-degrees">16°</span>
+        </div>
+    </div>
+    <div class="col col-two" align="center">
+      <div class="maintxt">
+          <img src="media/rain-02.png" class="img-responsive icon-medium">
+          <span class="overlay-text-day">TUE</span><br />
+          <span class="overlay-text-degrees">14°</span>
+        </div>
+    </div>
+    <div class="col col-three" align="center">
+      <div class="maintxt">
+          <img src="media/sun.png" class="img-responsive icon-medium">
+          <span class="overlay-text-day">WED</span><br />
+          <span class="overlay-text-degrees">18°</span>
+        </div>
+    </div>
+    <div class="col col-four" align="center">
+      <div class="maintxt">
+          <img src="media/cloudy-03.png" class="img-responsive icon-medium">
+          <span class="overlay-text-day">THU</span><br />
+          <span class="overlay-text-degrees">16°</span>
+        </div>
+    </div>
+    <div class="col col-five" align="center">
+      <div class="maintxt">
+          <img src="media/rain-02.png" class="img-responsive icon-medium">
+          <span class="overlay-text-day">FRI</span><br />
+          <span class="overlay-text-degrees">17°</span>
+        </div>
+    </div>
+  </div>
+  <br /><br /><br />
+  </div>
+  <script src="src/script.js"></script>
   </body>
 </html>
