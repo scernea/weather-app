@@ -19,6 +19,18 @@ a:active {
   color: #000000;
   text-decoration: none;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .icon-main {
   max-width: 300px;
   margin: 0 auto;
@@ -158,6 +170,7 @@ a:active {
   left: 50%;
   transform: translateX(-50%);
   font-weight: 700;
+  text-transform: capitalize;
 }
 .col-main {
   position: absolute;
