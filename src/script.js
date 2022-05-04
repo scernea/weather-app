@@ -49,6 +49,32 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  changeIcon(iconElement, response.data.weather[0].description);
+  celsiusTemperature = response.data.main.temp;
+}
+function changeIcon(iconElement, iconChange) {
+  if (iconChange === "rainy" || iconChange === "rain") {
+    iconElement.setAttribute("src", "media/rain-02.png");
+  } else if (iconChange === "cloudy" || iconChange === "clouds") {
+    iconElement.setAttribute("src", "media/cloudy-03.png");
+  } else if (iconChange === "snow" || iconChange === "snowy") {
+    iconElement.setAttribute("src", "media/rain-02.png");
+  } else if (
+    iconChange === "sunny" ||
+    iconChange === "hot" ||
+    iconChange === "sun"
+  ) {
+    iconElement.setAttribute("src", "media/sun.png");
+  } else if (
+    iconChange === "stormy" ||
+    iconChange === "storms" ||
+    iconChange === "thunderstorms" ||
+    iconChange === "drizzle"
+  ) {
+    iconElement.setAttribute("src", "media/rain-02.png");
+  } else {
+    iconElement.setAttribute("src", "media/sun.png");
+  }
 }
 
 function searchCity(city) {
@@ -81,21 +107,27 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("San Francisco");
 
-//Bonus
-function convertToFahrenheit(event) {
+function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#text-temp");
-  temperatureElement.innerHTML = 66;
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-function convertToCelsius(event) {
+function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#text-temp");
-  temperatureElement.innerHTML = 19;
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+let celsiusTemperature = null;
