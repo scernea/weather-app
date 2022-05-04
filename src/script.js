@@ -49,27 +49,32 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-  changeIcon(iconElement, response.data.weather[0].description);
+  changeIcon(iconElement, response.data.weather[0].main);
   celsiusTemperature = response.data.main.temp;
 }
 function changeIcon(iconElement, iconChange) {
-  if (iconChange === "rainy" || iconChange === "rain") {
+  if (iconChange === "rainy" || iconChange === "Rain") {
     iconElement.setAttribute("src", "media/rain-02.png");
-  } else if (iconChange === "cloudy" || iconChange === "clouds") {
+  } else if (
+    iconChange === "cloudy" ||
+    iconChange === "Clouds" ||
+    iconChange === "overcast clouds"
+  ) {
     iconElement.setAttribute("src", "media/cloudy-03.png");
-  } else if (iconChange === "snow" || iconChange === "snowy") {
+  } else if (iconChange === "Snow" || iconChange === "snowy") {
     iconElement.setAttribute("src", "media/rain-02.png");
   } else if (
     iconChange === "sunny" ||
     iconChange === "hot" ||
-    iconChange === "sun"
+    iconChange === "sun" ||
+    iconChange === "Clear"
   ) {
     iconElement.setAttribute("src", "media/sun.png");
   } else if (
     iconChange === "stormy" ||
     iconChange === "storms" ||
-    iconChange === "thunderstorms" ||
-    iconChange === "drizzle"
+    iconChange === "Thunderstorm" ||
+    iconChange === "Drizzle"
   ) {
     iconElement.setAttribute("src", "media/rain-02.png");
   } else {
