@@ -112,12 +112,21 @@ li {
   left: -62px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.overlay-text-degrees {
+.overlay-text-degrees-max {
   position: relative;
   top: -50px;
   left: -18px;
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 500;
+}
+
+.overlay-text-degrees-min {
+  position: relative;
+  top: -50px;
+  left: -18px;
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.5;
 }
 .text-one {
   position: absolute;
