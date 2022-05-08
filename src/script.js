@@ -30,6 +30,13 @@ function formatTime(timestamp) {
   return `${hours}:${minutes}`;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "bf201b8646cb6bb4516f64fb25eed406";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeatherCondition(response) {
   let timeElement = document.querySelector("#text-time");
   let iconElement = document.querySelector("#icon");
@@ -51,7 +58,33 @@ function displayWeatherCondition(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   changeIcon(iconElement, response.data.weather[0].main);
   celsiusTemperature = response.data.main.temp;
+  getForecast(response.data.coord);
 }
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row col-one" align="center"><div>`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div>
+          <img src="media/cloudy-03.png" class="img-responsive icon-medium">
+          <span class="overlay-text-day">${day}</span><br />
+          <span class="overlay-text-degrees-max">16°</span>
+          <span class="overlay-text-degrees-min">12°</span>
+      </div>
+    `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function changeIcon(iconElement, iconChange) {
   if (iconChange === "rainy" || iconChange === "Rain") {
     iconElement.setAttribute("src", "media/rain-02.png");
@@ -110,8 +143,6 @@ let currentLocationButton = document.querySelector("#current-location-button");
 
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-searchCity("San Francisco");
-
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#text-temp");
@@ -136,3 +167,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 let celsiusTemperature = null;
+searchCity("San Francisco");
