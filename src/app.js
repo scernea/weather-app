@@ -57,44 +57,30 @@ function displayWeatherCondition(response) {
   getForecast(response.data.coord);
 }
 
-function formatDate(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day];
-}
-
-function displayForecast(response) {
-  let forecast = response.data.daily;
-
+function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="col col-one" align="center">`;
-  forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
-      forecastHTML =
-        forecastHTML +
-        `
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row col-one" align="center"><div>`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
       <div>
           <img src="media/cloudy-03.png" class="img-responsive icon-medium">
-          <span class="overlay-text-day">${formatDate(
-            forecastDay.dt
-          )}</span><br />
-          <span class="overlay-text-degrees-max"> ${Math.round(
-            forecastDay.temp.max
-          )}° </span>
-          <span class="overlay-text-degrees-min"> ${Math.round(
-            forecastDay.temp.min
-          )}° </span>
+          <span class="overlay-text-day">${day}</span><br />
+          <span class="overlay-text-degrees-max">16°</span>
+          <span class="overlay-text-degrees-min">12°</span>
       </div>
-   `;
-    }
+    `;
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
 }
+
 function changeIcon(iconElement, iconChange) {
   if (iconChange === "rainy" || iconChange === "Rain") {
     iconElement.setAttribute("src", "media/rain-02.png");
