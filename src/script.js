@@ -69,13 +69,35 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="col col-one" align="center">`;
+  let forecastHTML = "";
   forecast.forEach(function (forecastDay, index) {
     if (index > 0 && index < 6) {
+      let col = "";
+      switch (index) {
+        case 1:
+          col = "col-one";
+          break;
+        case 2:
+          col = "col-two";
+          break;
+        case 3:
+          col = "col-three";
+          break;
+        case 4:
+          col = "col-four";
+          break;
+        case 5:
+          col = "col-five";
+          break;
+        case 6:
+          col = "col-six";
+          break;
+      }
+
       forecastHTML =
         forecastHTML +
-        `
-      <div>
+        `<div class="col ${col}" align="center">
+      <div class="maintxt">
         <img
                 class="img-responsive icon-medium"
                 src="media/${forecastDay.weather[0].icon}.svg"
@@ -91,12 +113,13 @@ function displayForecast(response) {
             forecastDay.temp.min
           )}° </span>
       </div>
+      </div>
    `;
     }
   });
-  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
 function changeIcon(iconElement, iconChange) {
   if (iconChange === "rainy" || iconChange === "Rain") {
     iconElement.setAttribute("src", "media/rain.png");
