@@ -60,24 +60,27 @@ function displayWeatherCondition(response) {
 function formatDate(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   return days[day];
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="col col-one" align="center">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index > 0 && index < 6) {
       forecastHTML =
         forecastHTML +
         `
       <div>
-          <img src="media/cloudy-03.png" class="img-responsive icon-medium">
+        <img
+                class="img-responsive icon-medium"
+                src="media/${forecastDay.weather[0].icon}.svg"
+                alt=""
+              />
           <span class="overlay-text-day">${formatDate(
             forecastDay.dt
           )}</span><br />
@@ -91,21 +94,20 @@ function displayForecast(response) {
    `;
     }
   });
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 function changeIcon(iconElement, iconChange) {
   if (iconChange === "rainy" || iconChange === "Rain") {
-    iconElement.setAttribute("src", "media/rain-02.png");
+    iconElement.setAttribute("src", "media/rain.png");
   } else if (
     iconChange === "cloudy" ||
     iconChange === "Clouds" ||
     iconChange === "overcast clouds"
   ) {
-    iconElement.setAttribute("src", "media/cloudy-03.png");
+    iconElement.setAttribute("src", "media/cloudy.png");
   } else if (iconChange === "Snow" || iconChange === "snowy") {
-    iconElement.setAttribute("src", "media/rain-02.png");
+    iconElement.setAttribute("src", "media/rain.png");
   } else if (
     iconChange === "sunny" ||
     iconChange === "hot" ||
@@ -119,7 +121,7 @@ function changeIcon(iconElement, iconChange) {
     iconChange === "Thunderstorm" ||
     iconChange === "Drizzle"
   ) {
-    iconElement.setAttribute("src", "media/rain-02.png");
+    iconElement.setAttribute("src", "media/rain.png");
   } else {
     iconElement.setAttribute("src", "media/sun.png");
   }
