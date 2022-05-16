@@ -13,12 +13,17 @@
     />
     <link rel="stylesheet" href="src/style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
   </head>
   <body>
   <div class="container">
+    <div class="container-inner">
       <br />
-     <div class="col center background"><form id="search-form"><input class="form-control form-control-sm" type="text" placeholder="Enter city here..." id="city-input">
-     <input type="submit" value="🔍" class="btn shadow-none emoji-mag-two"></div></form>
+     <div class="col center background"><div class="short-form"><form id="search-form"><input class="form-control form-control-sm" type="text" placeholder="Enter city here..." id="city-input">
+     <input type="submit" value="🔍" class="btn shadow-none submit-button" id="city-submit"></div></div></form>
        <div class="background center">
         <br />
          <div class="background-menu"><br /></div>
@@ -26,12 +31,8 @@
           <div class="col">
         <span class="col-main" id="city">San Francisco</span><br /><br />      
       </div>
-      <div class="col emoji-menu weather-temperature">
-        <span class="emoji-mag"><button class="btn shadow-none">🔍</button></span>
-        <span class="emoji-day"><button class="btn shadow-none" id="current-location-button">📍</button></span>
-        <span class="emoji-hour"><button class="btn shadow-none">⌛️</button></span>
-        <span class="emoji-wet weather-temperature" id="celcius-link"><button class="btn shadow-none"><a href="#" id="celsius-link" class="active">C°</a></button></span>
-        <span class="emoji-wind weather-temperature" id="fahrenheit-link"><button class="btn shadow-none" id="#fahrenheit-link"><a href="#" id="fahrenheit-link">F°</a></button></span>
+      <div class="col emoji-menu">
+        <span><button class="btn shadow-none emoji-day" id="current-location-button">Current City📍</button></span>
       </div>
       </div>
         <br />
@@ -39,7 +40,7 @@
         <ul>
         <li class="text-one"><span id="text-day">SUN</span></li>
         <li class="text-two"><span id="text-time">19:03</span></li>
-        <li class="text-three"><span id="text-temp"></span>°</li>
+        <li class="text-three"><span id="text-temp"></span><span class="text-temp">°C</span></li>
         <li class="text-four"><span id="humidity">06</span>%</li>
         <li class="text-five"><span id="wind">4</span> km/h</li>
         <li class="text-six"><span id="description">clear</span></li>
@@ -52,7 +53,7 @@
       <div>
           <img src="media/cloudy.png" class="img-responsive icon-medium">
           <span class="overlay-text-day">MON</span><br />
-          <span class="overlay-text-degrees-max">16°</span>
+          <span class="overlay-text-degrees-max">16°</span><br />
           <span class="overlay-text-degrees-min">12°</span>
         </div>
     </div>
@@ -92,6 +93,7 @@
   <br /><br /><br />
   </div>
   <span class="small-text"><a href="https://github.com/scernea/weather-app">Open-source code</a>, by Silvia Cernea</span>
+</div>
   <script src="src/script.js"></script>
   </body>
 </html>

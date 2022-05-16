@@ -47,12 +47,7 @@ function displayWeatherCondition(response) {
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
   timeElement.innerHTML = formatTime(response.data.dt * 1000);
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
-  changeIcon(iconElement, response.data.weather[0].main);
+  iconElement.setAttribute("src", `media/${response.data.weather[0].icon}.svg`);
   celsiusTemperature = response.data.main.temp;
   getForecast(response.data.coord);
 }
@@ -108,7 +103,7 @@ function displayForecast(response) {
           )}</span><br />
           <span class="overlay-text-degrees-max"> ${Math.round(
             forecastDay.temp.max
-          )}° </span>
+          )}° </span><br />
           <span class="overlay-text-degrees-min"> ${Math.round(
             forecastDay.temp.min
           )}° </span>
@@ -120,36 +115,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-function changeIcon(iconElement, iconChange) {
-  if (iconChange === "rainy" || iconChange === "Rain") {
-    iconElement.setAttribute("src", "media/rain.png");
-  } else if (
-    iconChange === "cloudy" ||
-    iconChange === "Clouds" ||
-    iconChange === "overcast clouds"
-  ) {
-    iconElement.setAttribute("src", "media/cloudy.png");
-  } else if (iconChange === "Snow" || iconChange === "snowy") {
-    iconElement.setAttribute("src", "media/rain.png");
-  } else if (
-    iconChange === "sunny" ||
-    iconChange === "hot" ||
-    iconChange === "sun" ||
-    iconChange === "Clear"
-  ) {
-    iconElement.setAttribute("src", "media/sun.png");
-  } else if (
-    iconChange === "stormy" ||
-    iconChange === "storms" ||
-    iconChange === "Thunderstorm" ||
-    iconChange === "Drizzle"
-  ) {
-    iconElement.setAttribute("src", "media/rain.png");
-  } else {
-    iconElement.setAttribute("src", "media/sun.png");
-  }
-}
-
 function searchCity(city) {
   let apiKey = "bf201b8646cb6bb4516f64fb25eed406";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -159,6 +124,7 @@ function searchCity(city) {
 function handleSubmit() {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
+  document.querySelector("#city-input").value = "";
   searchCity(city);
 }
 function searchLocation(position) {
@@ -178,30 +144,4 @@ let currentLocationButton = document.querySelector("#current-location-button");
 
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-searchCity("San Francisco");
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#text-temp");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#text-temp");
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-let celsiusTemperature = null;
 searchCity("San Francisco");

@@ -16,6 +16,10 @@ li {
   padding: 0;
 }
 
+div {
+  font-family: "Varela Round", sans-serif;
+}
+
 .weather-temperature .active {
   color: rgb (33, 33, 33);
   cursor: default;
@@ -29,6 +33,7 @@ li {
   max-width: 300px;
   margin: 0 auto;
   position: relative;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -37,6 +42,7 @@ li {
   max-width: 600px;
   min-width: 600px;
 }
+
 .background {
   position: relative;
   background-color: blanchedalmond;
@@ -45,18 +51,8 @@ li {
   border-style: solid;
   border-width: 5px;
 }
-.background-menu {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  background-color: blanchedalmond;
-  border-radius: 7px;
-  border-color: pink;
-  border-style: solid;
-  border-width: 3px;
-  max-width: 40px;
-  min-width: 40px;
-  min-height: 150px;
+.short-form {
+  max-width: 477px;
 }
 .icon-medium {
   max-width: 80px;
@@ -78,8 +74,14 @@ li {
 }
 .emoji-day {
   position: relative;
-  top: 12px;
-  left: -82px;
+  top: -94px;
+  left: -100px;
+  background-color: blanchedalmond;
+  border-radius: 7px;
+  border-color: pink;
+  border-style: solid;
+  border-width: 5px;
+  font-size: 12.5px;
 }
 .emoji-hour {
   position: relative;
@@ -110,11 +112,10 @@ li {
   position: relative;
   top: -15px;
   left: -62px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .overlay-text-degrees-max {
   position: relative;
-  top: -50px;
+  top: -47px;
   left: -18px;
   font-size: 16px;
   font-weight: 500;
@@ -134,7 +135,6 @@ li {
   left: 50%;
   transform: translateX(-50%);
   font-weight: 700;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .text-two {
   position: absolute;
@@ -143,7 +143,6 @@ li {
   transform: translateX(-50%);
   font-weight: 700;
   font-size: 24px;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .text-three {
   position: absolute;
@@ -175,6 +174,13 @@ li {
   font-weight: 700;
   text-transform: capitalize;
 }
+
+.text-temp {
+  font-size: 30px;
+  position: absolute;
+  top: 28px;
+}
+
 .col-main {
   position: absolute;
   left: 50%;
@@ -184,26 +190,35 @@ li {
 }
 .col-one {
   position: absolute;
-  top: 300px;
+  top: 325px;
   left: -200px;
 }
 .col-two {
   position: absolute;
-  top: 375px;
+  top: 400px;
   left: -120px;
 }
 .col-three {
   position: absolute;
-  top: 420px;
+  top: 445px;
   left: 20px;
 }
 .col-four {
   position: absolute;
-  top: 375px;
+  top: 400px;
   left: 150px;
 }
 .col-five {
   position: absolute;
-  top: 300px;
+  top: 325px;
   left: 230px;
+}
+
+.container-inner {
+  margin: 0px auto;
+}
+.submit-button {
+  position: absolute;
+  top: -2px;
+  left: 435px;
 }
